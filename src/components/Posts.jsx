@@ -76,6 +76,7 @@ export default function Posts() {
       }
       return x;
     });
+    // setPost(editPost)
   };
 
   return (
