@@ -6,20 +6,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 // import MenuIcon from "@material-ui/icons/Menu";
 import React from "react";
 import { Link } from "react-router-dom";
-
-const useStyles = makeStyles((theme) =>
-  createStyles({
-    root: {
-      flexGrow: 1,
-    },
-    menuButton: {
-      marginRight: theme.spacing(2),
-    },
-    title: {
-      flexGrow: 1,
-    },
-  })
-);
+import { useStyles } from "../styles/Dashboard";
 
 const Dashboard = () => {
   const classes = useStyles();

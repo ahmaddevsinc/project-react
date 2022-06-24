@@ -3,7 +3,7 @@ import Posts from "../components/Posts";
 import Signin from "../components/Signin";
 import Signup from "../components/Signup";
 
-export const Nav = [
+export const routes = [
   {
     path: "/",
     element: <Dashboard />,

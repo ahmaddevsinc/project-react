@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Button } from "@material-ui/core";
 import Avatar from "@material-ui/core/Avatar";
 import Card from "@material-ui/core/Card";
@@ -7,56 +8,17 @@ import CardHeader from "@material-ui/core/CardHeader";
 import Collapse from "@material-ui/core/Collapse";
 import { red } from "@material-ui/core/colors";
 import IconButton from "@material-ui/core/IconButton";
-import { createStyles, makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import clsx from "clsx";
-import React, { useState } from "react";
 import { ReactComponent as More } from "../icons/more.svg";
 import { ReactComponent as FavouriteIcon } from "../icons/favourite.svg";
 import { ReactComponent as ShareIcon } from "../icons/share.svg";
 import { ReactComponent as ExtendIcon } from "../icons/extend.svg";
-
-const useStyles = makeStyles((theme) =>
-  createStyles({
-    container: {
-      // height:"100vh",
-      //  background:" linear-gradient(11deg, black, transparent)"
-    },
-    root: {
-      maxWidth: 345,
-      marginBottom: "20px",
-      background: "#f3f3f38f",
-    },
-    media: {
-      height: 0,
-      paddingTop: "56.25%", // 16:9
-    },
-    expand: {
-      transform: "rotate(0deg)",
-      marginLeft: "auto",
-      transition: theme.transitions.create("transform", {
-        duration: theme.transitions.duration.shortest,
-      }),
-    },
-    expandOpen: {
-      transform: "rotate(180deg)",
-    },
-    avatar: {
-      backgroundColor: red[500],
-    },
-    cardCtn: {
-      display: "flex",
-      justifyContent: "center",
-      padding: "50px 0",
-      flexDirection: "column",
-      alignItems: "center",
-    },
-  })
-);
+import { useStyles } from "../styles/PostCard";
 
 const PostCard = ({ post, deletePost }) => {
   const classes = useStyles();
-  const [expanded, setExpanded] = React.useState(false);
+  const [expanded, setExpanded] = useState(false);
 
   const handleExpandClick = (id) => {
     console.log(id, "----");
@@ -74,7 +36,7 @@ const PostCard = ({ post, deletePost }) => {
           }
           action={
             <IconButton
-              onClick={deletePost(post.id)}
+              onClick={() => deletePost(post.id)}
               style={{ fontSize: "14px" }}
               aria-label="settings"
             >

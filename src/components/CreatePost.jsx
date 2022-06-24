@@ -4,41 +4,12 @@ import Dialog from "@material-ui/core/Dialog";
 import MuiDialogActions from "@material-ui/core/DialogActions";
 import MuiDialogContent from "@material-ui/core/DialogContent";
 import MuiDialogTitle from "@material-ui/core/DialogTitle";
-import { createStyles, makeStyles, withStyles } from "@material-ui/core/styles";
+import { createStyles, withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import React, { useState } from "react";
 import { v4 as uuid } from "uuid";
+import { useStyles } from "../styles/CreatePost";
 
-const useStyles = makeStyles((theme) => ({
-  createPost: {
-    display: "flex",
-    justifyContent: "center",
-    paddingTop: "30px",
-  },
-  inputPost: {
-    border: "1px solid grey",
-    borderRadius: "50px",
-    padding: "0 50px",
-    marginLeft: "20px",
-    outline: "none",
-    cursor: "pointer",
-  },
-  writeDescription: {
-    borderRadius: "20px",
-    padding: "0 10px",
-    outline: "none",
-    width: "485px",
-    border: "1px solid darkgrey",
-    height: "50px",
-  },
-  imageBtn: {
-    background: "black",
-    color: "white",
-    "&:hover": {
-      color: "black",
-    },
-  },
-}));
 
 const styles = (theme) =>
   createStyles({
@@ -117,17 +88,10 @@ const CreatePosts = ({ AddPosts }) => {
     });
   };
 
-  const HandelCreatePost = async (e) => {
+  const handleCreatePost = async (e) => {
     e.preventDefault();
     console.log("post", postInfo);
     AddPosts(postInfo);
-    // array.push(postInfo)
-    // const res = await axios.post(`https://jsonplaceholder.typicode.com/posts`, postInfo);
-    // setPost(postInfo);
-    // if(res){
-    //     setPost(res.data)
-    // }
-    // console.log("res", res);
     handleClose();
   };
 
@@ -149,7 +113,7 @@ const CreatePosts = ({ AddPosts }) => {
         <DialogTitle id="customized-dialog-title" onClose={handleClose}>
           Create a Post
         </DialogTitle>
-        <form onSubmit={HandelCreatePost} action="#">
+        <form onSubmit={handleCreatePost} action="#">
           <DialogContent dividers>
             <Typography gutterBottom>Title</Typography>
             <input
